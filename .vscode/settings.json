@@ -1,0 +1,9 @@
+{
+    "java.compile.nullAnalysis.mode": "disabled",
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.format.settings.url": ".vscode/java_format.xml",
+    "java.format.settings.profile": "johan",
+    "spring-boot.ls.problem.boot2.JAVA_AUTOWIRED_CONSTRUCTOR": "IGNORE",
+    "java.project.explorer.showNonJavaResources": true,
+    "java.dependency.packagePresentation": "hierarchical",
+}

@@ -1,10 +1,5 @@
 {
-  "properties": [
-    {
-      "name": "der-e-coach.flyway.datasource.url",
-      "type": "java.lang.String",
-      "description": "A description for 'der-e-coach.flyway.datasource.url'"
-    },
+  "properties": [    
     {
       "name": "der-e-coach.flyway.datasource.username",
       "type": "java.lang.String",
@@ -19,11 +14,6 @@
       "name": "der-e-coach.flyway.datasource.driver-class-name",
       "type": "java.lang.String",
       "description": "A description for 'der-e-coach.flyway.datasource.driver-class-name'"
-    },
-    {
-      "name": "der-e-coach.flyway.schemas",
-      "type": "java.lang.String",
-      "description": "A description for 'der-e-coach.flyway.schemas'"
     },
     {
       "name": "der-e-coach.flyway.enabled",

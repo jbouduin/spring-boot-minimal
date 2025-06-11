@@ -20,6 +20,16 @@
       "projectName": "mimimal_service",
       "args": "",
       "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-TranslationServiceApplication<translation_service>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "de.der_e_coach.translation_service.TranslationServiceApplication",
+      "projectName": "translation_service",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
     }
   ]
 }

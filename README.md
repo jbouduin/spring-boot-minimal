@@ -13,9 +13,9 @@ Originally created to check how much code one can be moved to the shared library
   - `docker exec -it <name of container> psql -U postgres -c "CREATE DATABASE minimal;`
   - `cd scripts`
   - `initialize_local_postgres.bat`. It will copy [database.init.sql](scripts/database.init.sql) to the container and execute it. The script performs the following actions:
-    - create the schemas `minimal_service` and  `authorization_service` in the `minimal` database.
+    - create the schemas `minimal_service`, `translation_service` and  `authorization_service` in the `minimal` database.
     - create a single flyway user `minimal_flyway_flyway` with password `your_flyway_password`.
-    - grant the user `minimal_flyway` the required privileges to perform database migrations in all schemas.
+    - grant the user `minimal_flyway` all privileges to perform database migrations in all schemas.
     - create a single service user `minimal_svc` with password `your_app_password`.
     - grant the user `minimal_svc` usage right on all the schemas.
 
@@ -32,3 +32,4 @@ openssl rsa -in private.key -pubout -out public.key
 ## Service ports
 - Authentication Service: 5401 - [Swagger](http://localhost:5401/api/docs/swagger-ui/index.html)
 - Minimal Service: 5402 - [Swagger](http://localhost:5402/api/docs/swagger-ui/index.html)
+- Translation Service: 5403 - [Swagger](http://localhost:5403/api/docs/swagger-ui/index.html)

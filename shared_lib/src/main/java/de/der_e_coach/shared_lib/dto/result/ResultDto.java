@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public final class ResultDto<T> {
-  // #region Static factory methods -------------------------------------------
+  //#region Static factory methods --------------------------------------------
   /**
    * @param <T>
    * @param value
@@ -161,7 +161,7 @@ public final class ResultDto<T> {
   }
   // #endregion
 
-  // #region Private fields ---------------------------------------------------
+  //#region Private fields ----------------------------------------------------
   private T data;
   private ResultStatus status = ResultStatus.OK;
   private boolean success = true;
@@ -170,7 +170,7 @@ public final class ResultDto<T> {
   private List<ValidationError> validationErrors = new ArrayList<ValidationError>();
   // #endregion
 
-  // #region Constructor ------------------------------------------------------
+  //#region Constructor -------------------------------------------------------
   private ResultDto(T value) {
     data = value;
     setMessage();
@@ -199,7 +199,7 @@ public final class ResultDto<T> {
   }
   // #endregion
 
-  // #region Getters ----------------------------------------------------------
+  //#region Getters -----------------------------------------------------------
   public String getSuccessMessage() {
     return successMessage;
   }
@@ -229,7 +229,17 @@ public final class ResultDto<T> {
   }
   // #endregion
 
-  // #region Auxiliary methods ------------------------------------------------
+  public <U> ResultDto<U> convert(U value) {
+    ResultDto<U> converted = new ResultDto<U>(value);
+    converted.errors = this.errors;
+    converted.status = this.status;
+    converted.success = this.success;
+    converted.successMessage = this.successMessage;
+    converted.validationErrors = this.validationErrors;
+    return converted;
+  } 
+
+  //#region Auxiliary methods -------------------------------------------------
   private void setSuccess() {
     success = status.getValue() < ResultStatus.BAD_REQUEST.getValue();
   }

@@ -1,4 +1,4 @@
-package de.der_e_coach.authentication_service.configuration;
+package de.der_e_coach.translation_service.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +9,7 @@ import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 
 @Configuration
-public class OpenApiConfig {
+public class OpenApiConfiguration {
   //#region Configuration beans -----------------------------------------------
   @Bean
   public OpenAPI customOpenAPI() {

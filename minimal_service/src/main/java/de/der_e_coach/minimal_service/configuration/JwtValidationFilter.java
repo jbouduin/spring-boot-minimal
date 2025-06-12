@@ -15,7 +15,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.der_e_coach.minimal_service.service.feign.AuthenticationServiceClient;
+import de.der_e_coach.minimal_service.service.feign.authentication_service.AuthenticationServiceClient;
 import de.der_e_coach.shared_lib.dto.authorization.AuthorizationResultDto;
 import de.der_e_coach.shared_lib.dto.result.ResultDto;
 import jakarta.servlet.FilterChain;
@@ -45,6 +45,7 @@ public class JwtValidationFilter extends OncePerRequestFilter {
     if (header != null && header.startsWith("Bearer ")) {
       String token = header.substring(7);
       ResultDto<AuthorizationResultDto> validationResult = authenticationServiceClient.validateToken(token);
+      System.out.println("authorization result: " + validationResult.isSuccess());
       if (validationResult.isSuccess()) {
         Collection<? extends GrantedAuthority> authorities = validationResult
           .getData()

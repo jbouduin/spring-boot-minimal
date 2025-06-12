@@ -19,17 +19,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @Tag(name = "Authentication")
 public class AuthenticationController {
-  // #region Private fields ---------------------------------------------------
+  //#region Private fields ----------------------------------------------------
   private final AuthenticationService authenticationService;
-  // #endregion
+  //#endregion
 
-  // #region Constructor ------------------------------------------------------
+  //#region Constructor -------------------------------------------------------
   public AuthenticationController(AuthenticationService authenticationService) {
     this.authenticationService = authenticationService;
   }
-  // #endregion
+  //#endregion
 
-  // #region Post "login" ------------------------------------------------------
+  //#region Post "login" ------------------------------------------------------
   @Operation(summary = "Login", description = "Login using account name or login, and password")
   @ApiResponses(
       value = {
@@ -44,5 +44,5 @@ public class AuthenticationController {
     ResultDto<AuthenticationResponseDto> result = authenticationService.login(requestDto);
     return ResponseEntity.status(result.getStatus().getValue()).body(result);
   }
-  // #endregion
+  //#endregion
 }

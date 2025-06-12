@@ -16,7 +16,7 @@ public class ValidationError {
   public ValidationError(Class<?> sourceClass, String methodName, String ruleNumber, String errorMessage) {
     this.identifier = String.format("%s.%s#V%s", sourceClass.getSimpleName(), methodName, ruleNumber);
     this.errorMessage = errorMessage;
-    this.severity = ValidationSeverity.Error.getEntityName();
+    this.severity = ValidationSeverity.Error.name();
   }  
   //#endregion
 

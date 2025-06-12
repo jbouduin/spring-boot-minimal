@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import de.der_e_coach.shared_lib.dto.result.ResultDto;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
+@Tag(name = "Test authorizations")
 @RequestMapping(path = "/authorization_test")
 public class AuthorizationTestController {
 

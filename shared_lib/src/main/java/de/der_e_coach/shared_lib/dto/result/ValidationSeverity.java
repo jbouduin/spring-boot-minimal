@@ -1,8 +1,8 @@
 package de.der_e_coach.shared_lib.dto.result;
 
-import de.der_e_coach.shared_lib.dto.translation.TranslatableEnum;
+import de.der_e_coach.shared_lib.dto.translation.TranslationKeyDto;
 
-public enum ValidationSeverity implements TranslatableEnum {
+public enum ValidationSeverity {
     //#region Enum values -----------------------------------------------------
     Error("severity_error"),
     Warning("severity_warning"),
@@ -10,24 +10,16 @@ public enum ValidationSeverity implements TranslatableEnum {
   //#endregion
 
   //#region Private fields ----------------------------------------------------
-  final private String entityField;
+  final private TranslationKeyDto translationKey;
   //#endregion
 
   //#region Constructor -------------------------------------------------------
   private ValidationSeverity(String entityField) {
-    this.entityField = entityField;
+    this.translationKey = new TranslationKeyDto("validation_severity", entityField);
   }
   //#endregion
 
-  //#region TranslatableEnum members ------------------------------------------
-  @Override
-  public String getEntityName() {
-    return "validation";
+    public TranslationKeyDto getTranslationKey() {
+    return this.translationKey;
   }
-
-  @Override
-  public String getEntityField() {
-    return entityField;
-  }
-  //#endregion
 }

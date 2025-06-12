@@ -20,18 +20,18 @@ import de.der_e_coach.translation_service.service.TranslationService;
  */
 @Component
 public class V01_00_003__Language_Code_Translations extends BaseJavaMigration {
-  // #region Private fields ---------------------------------------------------
+  //#region Private fields ----------------------------------------------------
   private final ApplicationContext applicationContext;
-  // #endregion
+  //#endregion
 
-  // #region Constructor ------------------------------------------------------
+  //#region Constructor -------------------------------------------------------
   @Autowired
   public V01_00_003__Language_Code_Translations(ApplicationContext applicationContext) {
     this.applicationContext = applicationContext;
   }
-  // #endregion
+  //#endregion
 
-  // #region BaseJavaMigration members ----------------------------------------
+  //#region BaseJavaMigration members -----------------------------------------
   @Override
   public void migrate(Context context) throws Exception {
     TranslationService translationService = applicationContext.getBean(TranslationService.class);
@@ -41,27 +41,27 @@ public class V01_00_003__Language_Code_Translations extends BaseJavaMigration {
         List
           .of(
             // German
-            new TranslationDto(LanguageCode.DE, LanguageCode.DE, "Deutsch"),
-            new TranslationDto(LanguageCode.DE, LanguageCode.EN, "German"),
-            new TranslationDto(LanguageCode.DE, LanguageCode.NL, "Duits"),
-            new TranslationDto(LanguageCode.DE, LanguageCode.FR, "Allemand"),
+            new TranslationDto(LanguageCode.DE.getTranslationKey(), LanguageCode.DE, "Deutsch"),
+            new TranslationDto(LanguageCode.DE.getTranslationKey(), LanguageCode.EN, "German"),
+            new TranslationDto(LanguageCode.DE.getTranslationKey(), LanguageCode.NL, "Duits"),
+            new TranslationDto(LanguageCode.DE.getTranslationKey(), LanguageCode.FR, "Allemand"),
             // English
-            new TranslationDto(LanguageCode.EN, LanguageCode.DE, "Englisch"),
-            new TranslationDto(LanguageCode.EN, LanguageCode.EN, "English"),
-            new TranslationDto(LanguageCode.EN, LanguageCode.NL, "Engels"),
-            new TranslationDto(LanguageCode.EN, LanguageCode.FR, "Anglais"),
+            new TranslationDto(LanguageCode.EN.getTranslationKey(), LanguageCode.DE, "Englisch"),
+            new TranslationDto(LanguageCode.EN.getTranslationKey(), LanguageCode.EN, "English"),
+            new TranslationDto(LanguageCode.EN.getTranslationKey(), LanguageCode.NL, "Engels"),
+            new TranslationDto(LanguageCode.EN.getTranslationKey(), LanguageCode.FR, "Anglais"),
             // Dutch
-            new TranslationDto(LanguageCode.NL, LanguageCode.DE, "Niederländisch"),
-            new TranslationDto(LanguageCode.NL, LanguageCode.EN, "Dutch"),
-            new TranslationDto(LanguageCode.NL, LanguageCode.NL, "Nederlands"),
-            new TranslationDto(LanguageCode.NL, LanguageCode.FR, "Néerlandais"),
+            new TranslationDto(LanguageCode.NL.getTranslationKey(), LanguageCode.DE, "Niederländisch"),
+            new TranslationDto(LanguageCode.NL.getTranslationKey(), LanguageCode.EN, "Dutch"),
+            new TranslationDto(LanguageCode.NL.getTranslationKey(), LanguageCode.NL, "Nederlands"),
+            new TranslationDto(LanguageCode.NL.getTranslationKey(), LanguageCode.FR, "Néerlandais"),
             // French
-            new TranslationDto(LanguageCode.FR, LanguageCode.DE, "Französisch"),
-            new TranslationDto(LanguageCode.FR, LanguageCode.EN, "French"),
-            new TranslationDto(LanguageCode.FR, LanguageCode.NL, "Frans"),
-            new TranslationDto(LanguageCode.FR, LanguageCode.FR, "Français")
+            new TranslationDto(LanguageCode.FR.getTranslationKey(), LanguageCode.DE, "Französisch"),
+            new TranslationDto(LanguageCode.FR.getTranslationKey(), LanguageCode.EN, "French"),
+            new TranslationDto(LanguageCode.FR.getTranslationKey(), LanguageCode.NL, "Frans"),
+            new TranslationDto(LanguageCode.FR.getTranslationKey(), LanguageCode.FR, "Français")
           )
       );
   }
-  // #endregion
+  //#endregion
 }

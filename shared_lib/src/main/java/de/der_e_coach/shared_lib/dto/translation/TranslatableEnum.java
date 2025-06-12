@@ -30,7 +30,6 @@ package de.der_e_coach.shared_lib.dto.translation;
  * }
  * </pre>
  */
-public interface TranslatableEnum {
-  String getEntityName();
-  String getEntityField();
-}
+// public interface TranslatableEnum {
+//   TranslationKeyDto getTranslationKey();
+// }

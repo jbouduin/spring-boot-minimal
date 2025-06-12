@@ -2,7 +2,9 @@ package de.der_e_coach.translation_service.entity;
 
 import java.io.Serializable;
 
-import de.der_e_coach.shared_lib.dto.translation.TranslatableEnum;
+import de.der_e_coach.shared_lib.dto.translation.LanguageCode;
+
+import de.der_e_coach.shared_lib.dto.translation.TranslationKeyDto;
 
 /**
  * Composite primary key for the Translation entity
@@ -12,18 +14,18 @@ public class TranslationId implements Serializable {
   private String entityName;
   private String entityField;
   private Long entityId;
-  private TranslatableEnum languageCode;
+  private LanguageCode language;
   //#endregion
 
   //#region Constructor -------------------------------------------------------
   public TranslationId() {
   }
 
-  public TranslationId(TranslatableEnum translationKey, Long entityId, TranslatableEnum languageCode) {
-    this.entityName = translationKey.getEntityName();
-    this.entityField = translationKey.getEntityField();
+  public TranslationId(TranslationKeyDto key, Long entityId, LanguageCode language) {
+    this.entityName = key.entityName();
+    this.entityField = key.entityName();
     this.entityId = entityId;
-    this.languageCode = languageCode;
+    this.language = language;
   }
   //#endregion
 
@@ -36,12 +38,12 @@ public class TranslationId implements Serializable {
     this.entityName = translationKey;
   }
 
-  public TranslatableEnum getLanguageCode() {
-    return languageCode;
+  public LanguageCode getLanguage() {
+    return language;
   }
 
-  public void setLanguageCode(TranslatableEnum languageCode) {
-    this.languageCode = languageCode;
+  public void setLanguage(LanguageCode language) {
+    this.language = language;
   }
 
   public Long getEntityId() {
@@ -68,7 +70,7 @@ public class TranslationId implements Serializable {
     int result = 1;
     result = prime * result + ((entityName == null) ? 0 : entityName.hashCode());
     result = prime * result + ((entityId == null) ? 0 : entityId.hashCode());
-    result = prime * result + ((languageCode == null) ? 0 : languageCode.hashCode());
+    result = prime * result + ((language == null) ? 0 : language.hashCode());
     return result;
   }
 
@@ -89,10 +91,10 @@ public class TranslationId implements Serializable {
         return false;
     } else if (!entityId.equals(other.entityId))
       return false;
-    if (languageCode == null) {
-      if (other.languageCode != null)
+    if (language == null) {
+      if (other.language != null)
         return false;
-    } else if (!languageCode.equals(other.languageCode))
+    } else if (!language.equals(other.language))
       return false;
     return true;
   }

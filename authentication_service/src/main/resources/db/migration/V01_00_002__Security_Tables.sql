@@ -18,7 +18,7 @@ CREATE UNIQUE INDEX accounts_email_unique ON account (LOWER(email));
 -- create role table
 CREATE TABLE
   account_role (
-    account_id INT NOT NULL,
+    account_id BIGINT NOT NULL,
     account_role VARCHAR(50) NOT NULL,
     PRIMARY KEY (account_id, account_role),
     CONSTRAINT account_role_account_id_fk FOREIGN KEY (account_id) REFERENCES account (id) ON DELETE CASCADE

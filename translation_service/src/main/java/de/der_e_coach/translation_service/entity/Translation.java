@@ -45,7 +45,7 @@ public class Translation {
   @Enumerated
   @JdbcType(PostgreSQLEnumJdbcType.class)
   @Column(name = "language_code")
-  private LanguageCode languageCode;
+  private LanguageCode language;
   //#endregion
 
   //#region Entity field - text -----------------------------------------------
@@ -59,19 +59,19 @@ public class Translation {
   public Translation() {
   }
 
-  public Translation(TranslationKeyDto translationKey, Long entityId, LanguageCode languageCode, String text) {
+  public Translation(TranslationKeyDto translationKey, Long entityId, LanguageCode language, String text) {
     this.entityName = translationKey.entityName();
     this.entityField = translationKey.entityField();
     this.entityId = entityId;
-    this.languageCode = languageCode;
+    this.language = language;
     this.text = text;
   }
 
   public Translation(TranslationDto dto) {
-    this.entityName = dto.getEntityName();
-    this.entityField = dto.getEntityField();
+    this.entityName = dto.getKey().entityName();
+    this.entityField = dto.getKey().entityField();
     this.entityId = dto.getEntityId();
-    this.languageCode = dto.getLanguageCode();
+    this.language = dto.getLanguageCode();
     this.text = dto.getText();
   }
 
@@ -79,18 +79,18 @@ public class Translation {
     this.entityName = TranslationKeyDto.entityName();
     this.entityField = TranslationKeyDto.entityField();
     this.entityId = 0L;
-    this.languageCode = languageCode;
+    this.language = languageCode;
     this.text = text;
   }
   //#endregion
 
   //#region Getters/Setters ---------------------------------------------------
-  public LanguageCode getLanguageCode() {
-    return languageCode;
+  public LanguageCode getLanguage() {
+    return language;
   }
 
-  public Translation setLanguageCode(LanguageCode languageCode) {
-    this.languageCode = languageCode;
+  public Translation setLanguage(LanguageCode languageCode) {
+    this.language = languageCode;
     return this;
   }
 

@@ -49,6 +49,11 @@
       "name": "der-e-coach.jwt.time-out",
       "type": "java.lang.String",
       "description": "A description for 'der-e-coach.jwt.time-out'"
-    }
+    },
+    {
+      "name": "der-e-coach.authentication-service.url",
+      "type": "java.lang.String",
+      "description": "A description for 'der-e-coach.authentication-service.url'"
+    }    
   ]
 }

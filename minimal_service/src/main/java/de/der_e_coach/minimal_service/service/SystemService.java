@@ -6,7 +6,8 @@ import de.der_e_coach.shared_lib.dto.system.ApiInfoDto;
 public interface SystemService {
   /**
    * Get API info about the service.
-   * @return {@link ApiInfoDto} 
+   * 
+   * @return {@link ApiInfoDto}
    */
   ResultDto<ApiInfoDto> getApiInfo();
 }

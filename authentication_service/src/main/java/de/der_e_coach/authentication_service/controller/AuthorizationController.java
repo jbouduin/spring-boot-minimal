@@ -18,17 +18,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @Tag(name = "Authorization")
 public class AuthorizationController {
-  // #region Private fields ---------------------------------------------------
+  //#region Private fields ----------------------------------------------------
   private AuthorizationService authorizationController;
-  // #endregion
+  //#endregion
 
-  // #region Constructor ------------------------------------------------------
+  //#region Constructor -------------------------------------------------------
   public AuthorizationController(AuthorizationService authorizationService) {
     this.authorizationController = authorizationService;
   }
   // #endregion
 
-  // #region Post "authorize" -------------------------------------------------
+  //#region Post "authorize" --------------------------------------------------
   @Operation(summary = "Authorize", description = "Checks the JWT passed and extracts account name and roles.")
   @ApiResponses(
       value = {
@@ -37,7 +37,7 @@ public class AuthorizationController {
       }
   )
   @PostMapping(
-      path = "/authorize", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE
+      path = "authorize", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE
   )
   public ResponseEntity<ResultDto<AuthorizationResultDto>> authorize(@RequestBody String token) {
     ResultDto<AuthorizationResultDto> result = authorizationController.authorize(token);

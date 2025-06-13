@@ -37,8 +37,7 @@ public class ItemServiceImpl implements ItemService {
     ResultDto<List<ItemDto>> result;
     ResultDto<List<TranslationDto>> translations = translationServiceClient
       .getTranslations(List.of(Item.DESCRIPTION_TRANSLATION_KEY.entityName()), null, null, null);
-    if (translations.isSuccess()) {
-      translations.getData().forEach((TranslationDto t) -> System.out.println("Translation: " + t));
+    if (translations.isSuccess()) {      
       List<ItemDto> items = itemRepository
         .findAll()
         .stream()

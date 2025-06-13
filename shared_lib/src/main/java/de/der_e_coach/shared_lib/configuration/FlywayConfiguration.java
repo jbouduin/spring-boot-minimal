@@ -14,7 +14,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 @Configuration
 public class FlywayConfiguration {
   //#region Private injected fields -------------------------------------------
-  @Value("${spring.datasource.url}")
+  @Value("${der-e-coach.flyway.datasource.url}")
   private String flywayUrl;
 
   @Value("${der-e-coach.flyway.datasource.username}")
@@ -26,7 +26,7 @@ public class FlywayConfiguration {
   @Value("${der-e-coach.flyway.datasource.driver-class-name}")
   private String flywayDriverClassName;
 
-  @Value("${spring.jpa.properties.hibernate.default_schema}")
+  @Value("${der-e-coach.flyway.datasource.default_schema}")
   private String flywaySchemas;
 
   @Value("${der-e-coach.flyway.validate-on-migrate}")

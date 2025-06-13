@@ -25,18 +25,18 @@ import io.jsonwebtoken.Jwts;
 
 @Component
 public class JwtTokenValidatorImpl implements JwtTokenValidator {
-  // #region Private fields ---------------------------------------------------
+  //#region Private fields ----------------------------------------------------
   private final PublicKey publicKey;
-  // #endregion
+  //#endregion
 
-  // #region Constructor ------------------------------------------------------
+  //#region Constructor -------------------------------------------------------
   public JwtTokenValidatorImpl(
-      @Value("${der-e-coach.jwt.public-key-path}") String publicKeyPath) throws Exception {
+      @Value("${der-e-coach.authentication.jwt.public-key-path}") String publicKeyPath) throws Exception {
     this.publicKey = loadPublicKey(publicKeyPath);
   }
-  // #endregion
+  //#endregion
 
-  // #region JwtTokenValidator members ----------------------------------------
+  //#region JwtTokenValidator members -----------------------------------------
   public ResultDto<AuthorizationResultDto> getAuthentication(String token)
       throws JsonProcessingException, ExpiredJwtException {
     Claims claims = Jwts.parserBuilder()
@@ -56,9 +56,9 @@ public class JwtTokenValidatorImpl implements JwtTokenValidator {
         .setAccountName(claims.getSubject());
     return ResultDto.success(authorizationResult);
   }
-  // #endregion
+  //#endregion
 
-  // #region Auxiliary methods ------------------------------------------------
+  //#region Auxiliary methods -------------------------------------------------
   private PublicKey loadPublicKey(String path) throws Exception {
     String key = Files.readString(Paths.get(path))
         .replace("-----BEGIN PUBLIC KEY-----", "")
@@ -68,5 +68,5 @@ public class JwtTokenValidatorImpl implements JwtTokenValidator {
     X509EncodedKeySpec spec = new X509EncodedKeySpec(decoded);
     return KeyFactory.getInstance("RSA").generatePublic(spec);
   }
-  // #endregion
+  //#endregion
 }

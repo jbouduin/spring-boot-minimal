@@ -1,59 +1,67 @@
-{
-  "properties": [    
-    {
-      "name": "der-e-coach.flyway.datasource.username",
-      "type": "java.lang.String",
-      "description": "A description for 'der-e-coach.flyway.datasource.username'"
-    },
-    {
-      "name": "der-e-coach.flyway.datasource.password",
-      "type": "java.lang.String",
-      "description": "A description for 'der-e-coach.flyway.datasource.password'"
-    },
-    {
-      "name": "der-e-coach.flyway.datasource.driver-class-name",
-      "type": "java.lang.String",
-      "description": "A description for 'der-e-coach.flyway.datasource.driver-class-name'"
-    },
-    {
-      "name": "der-e-coach.flyway.enabled",
-      "type": "java.lang.String",
-      "description": "A description for 'der-e-coach.flyway.enabled'"
-    },
-    {
-      "name": "der-e-coach.flyway.validate-on-migrate",
-      "type": "java.lang.String",
-      "description": "A description for 'der-e-coach.flyway.validate-on-migrate'"
-    },
-    {
-      "name": "der-e-coach.flyway.baseline-on-migrate",
-      "type": "java.lang.String",
-      "description": "A description for 'der-e-coach.flyway.baseline-on-migrate'"
-    },
-    {
-      "name": "der-e-coach.flyway.baseline-version",
-      "type": "java.lang.String",
-      "description": "A description for 'der-e-coach.flyway.baseline-version'"
-    },
-    {
-      "name": "der-e-coach.jwt.private-key-path",
-      "type": "java.lang.String",
-      "description": "A description for 'der-e-coach.jwt.private-key-path'"
-    },
-    {
-      "name": "der-e-coach.jwt.public-key-path",
-      "type": "java.lang.String",
-      "description": "A description for 'der-e-coach.jwt.public-key-path'"
-    },
-    {
-      "name": "der-e-coach.jwt.time-out",
-      "type": "java.lang.String",
-      "description": "A description for 'der-e-coach.jwt.time-out'"
-    },
-    {
-      "name": "der-e-coach.authentication-service.url",
-      "type": "java.lang.String",
-      "description": "A description for 'der-e-coach.authentication-service.url'"
-    }    
-  ]
-}
+{"properties": [
+  {
+    "name": "der-e-coach.flyway.datasource.username",
+    "type": "java.lang.String",
+    "description": "A description for 'der-e-coach.flyway.datasource.username'"
+  },
+  {
+    "name": "der-e-coach.flyway.datasource.password",
+    "type": "java.lang.String",
+    "description": "A description for 'der-e-coach.flyway.datasource.password'"
+  },
+  {
+    "name": "der-e-coach.flyway.datasource.driver-class-name",
+    "type": "java.lang.String",
+    "description": "A description for 'der-e-coach.flyway.datasource.driver-class-name'"
+  },
+  {
+    "name": "der-e-coach.flyway.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'der-e-coach.flyway.enabled'"
+  },
+  {
+    "name": "der-e-coach.flyway.validate-on-migrate",
+    "type": "java.lang.String",
+    "description": "A description for 'der-e-coach.flyway.validate-on-migrate'"
+  },
+  {
+    "name": "der-e-coach.flyway.baseline-on-migrate",
+    "type": "java.lang.String",
+    "description": "A description for 'der-e-coach.flyway.baseline-on-migrate'"
+  },
+  {
+    "name": "der-e-coach.flyway.baseline-version",
+    "type": "java.lang.String",
+    "description": "A description for 'der-e-coach.flyway.baseline-version'"
+  },
+  {
+    "name": "der-e-coach.authentication-service.url",
+    "type": "java.lang.String",
+    "description": "A description for 'der-e-coach.authentication-service.url'"
+  },
+  {
+    "name": "der-e-coach.flyway.datasource.default_schema",
+    "type": "java.lang.String",
+    "description": "A description for 'der-e-coach.flyway.datasource.default_schema'"
+  },
+  {
+    "name": "der-e-coach.flyway.datasource.url",
+    "type": "java.lang.String",
+    "description": "A description for 'der-e-coach.flyway.datasource.url'"
+  },
+  {
+    "name": "der-e-coach.authentication.system-user",
+    "type": "java.lang.String",
+    "description": "A description for 'der-e-coach.authentication.system-user'"
+  },
+  {
+    "name": "der-e-coach.authentication.system-password",
+    "type": "java.lang.String",
+    "description": "A description for 'der-e-coach.authentication.system-password'"
+  },
+  {
+    "name": "der-e-coach.translation-service.url",
+    "type": "java.lang.String",
+    "description": "A description for 'der-e-coach.translation-service.url'"
+  }
+]}

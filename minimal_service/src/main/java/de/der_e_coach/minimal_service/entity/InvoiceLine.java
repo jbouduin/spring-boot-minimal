@@ -2,6 +2,7 @@ package de.der_e_coach.minimal_service.entity;
 
 import java.math.BigDecimal;
 
+import de.der_e_coach.minimal_service.dto.InvoiceLineDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -43,6 +44,11 @@ public class InvoiceLine {
 
   //#region Constructor -------------------------------------------------------
   public InvoiceLine() {
+  }
+
+  public InvoiceLine(InvoiceLineDto invoiceLine) {
+    this.id = invoiceLine.getId();
+    this.quantity = invoiceLine.getQuantity();
   }
   //#endregion
 

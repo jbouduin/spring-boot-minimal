@@ -22,19 +22,17 @@ public class FeignClientConfiguration {
         }        
       }
 
-      private String getJwtToken() {
-        System.out.println("in interceptor");
+      private String getJwtToken() {        
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes)RequestContextHolder
           .getRequestAttributes();
         if (requestAttributes != null) {
           HttpServletRequest request = requestAttributes.getRequest();
-          String authorizationHeader = request.getHeader("Authorization");
-          System.out.println("authorization header is " + authorizationHeader);
+          String authorizationHeader = request.getHeader("Authorization");          
           if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
-            return authorizationHeader.substring(7); // "Bearer " entfernen
+            return authorizationHeader.substring(7);
           }
         }
-        return null; // oder eine geeignete Ausnahme werfen
+        return null; 
       }
     };
   }

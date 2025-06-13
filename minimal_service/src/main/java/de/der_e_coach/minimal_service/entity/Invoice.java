@@ -2,6 +2,7 @@ package de.der_e_coach.minimal_service.entity;
 
 import java.util.Set;
 
+import de.der_e_coach.minimal_service.dto.InvoiceDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -44,6 +45,12 @@ public class Invoice {
 
   //#region Constructor -------------------------------------------------------
   public Invoice() {
+  }
+
+  public Invoice(InvoiceDto invoice) {
+    this.id = invoice.getId();
+    this.invoiceNumber = invoice.getInvoiceNumber();
+    this.customerName = invoice.getCustomerName();
   }
   //#endregion
 

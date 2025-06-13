@@ -44,8 +44,7 @@ public class JwtValidationFilter extends OncePerRequestFilter {
     String header = request.getHeader(HttpHeaders.AUTHORIZATION);
     if (header != null && header.startsWith("Bearer ")) {
       String token = header.substring(7);
-      ResultDto<AuthorizationResultDto> validationResult = authenticationServiceClient.validateToken(token);
-      System.out.println("authorization result: " + validationResult.isSuccess());
+      ResultDto<AuthorizationResultDto> validationResult = authenticationServiceClient.validateToken(token);      
       if (validationResult.isSuccess()) {
         Collection<? extends GrantedAuthority> authorities = validationResult
           .getData()

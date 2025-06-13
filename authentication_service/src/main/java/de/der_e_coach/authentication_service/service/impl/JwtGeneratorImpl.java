@@ -18,20 +18,20 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 @Component
 public class JwtGeneratorImpl implements JwtGenerator {
-  // #region Private fields ---------------------------------------------------
+  //#region Private fields ----------------------------------------------------
   private final long expirationTime;
   private final PrivateKey privateKey;
-  // #endregion
+  //#endregion
 
-  // #region Constructor ------------------------------------------------------
+  //#region Constructor -------------------------------------------------------
   public JwtGeneratorImpl(
-      @Value("${der-e-coach.jwt.private-key-path}") String privateKeyPath,
-      @Value("${der-e-coach.jwt.time-out}") long expirationTime) {
+      @Value("${der-e-coach.authentication.jwt.private-key-path}") String privateKeyPath,
+      @Value("${der-e-coach.authentication.jwt.time-out}") long expirationTime) {
     this.expirationTime = expirationTime;
     this.privateKey = loadPrivateKey(privateKeyPath);
   }
 
-  // #region JwtGenerator members ---------------------------------------------
+  //#region JwtGenerator members ----------------------------------------------
   public String generateToken(String username, List<String> roles) {
     return Jwts.builder()
         .setSubject(username)
@@ -41,9 +41,9 @@ public class JwtGeneratorImpl implements JwtGenerator {
         .signWith(privateKey, SignatureAlgorithm.RS256)
         .compact();
   }
-  // #endregion
+  //#endregion
 
-  // #region Auxiliary methods ------------------------------------------------
+  //#region Auxiliary methods -------------------------------------------------
   private PrivateKey loadPrivateKey(String privateKeyPath) {
     try {
       String key = Files.readString(Paths.get(privateKeyPath))
@@ -59,5 +59,5 @@ public class JwtGeneratorImpl implements JwtGenerator {
       throw new RuntimeException("Failed to load public key", e);
     }
   }
-  // #endregion
+  //#endregion
 }

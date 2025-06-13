@@ -1,0 +1,29 @@
+{
+  "properties": [
+    {
+      "name": "der-e-coach.authentication.first-usage-admin-user",
+      "type": "java.lang.String",
+      "description": "A description for 'der-e-coach.authentication.first-usage-admin-user'"
+    },
+    {
+      "name": "der-e-coach.authentication.first-usage-admin-password",
+      "type": "java.lang.String",
+      "description": "A description for 'der-e-coach.authentication.first-usage-admin-password'"
+    },
+    {
+      "name": "der-e-coach.authentication.jwt.private-key-path",
+      "type": "java.lang.String",
+      "description": "A description for 'der-e-coach.authentication.jwt.private-key-path'"
+    },
+    {
+      "name": "der-e-coach.authentication.jwt.public-key-path",
+      "type": "java.lang.String",
+      "description": "A description for 'der-e-coach.authentication.jwt.public-key-path'"
+    },
+    {
+      "name": "der-e-coach.authentication.jwt.time-out",
+      "type": "java.lang.String",
+      "description": "A description for 'der-e-coach.authentication.jwt.time-out'"
+    }
+  ]
+}

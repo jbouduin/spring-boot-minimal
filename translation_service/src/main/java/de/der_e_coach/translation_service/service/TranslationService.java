@@ -4,6 +4,7 @@ import java.util.List;
 
 import de.der_e_coach.shared_lib.dto.result.ResultDto;
 import de.der_e_coach.shared_lib.dto.translation.LanguageCode;
+import de.der_e_coach.shared_lib.dto.translation.TranslationMergeDto;
 import de.der_e_coach.translation_service.dto.TranslationDto;
 import de.der_e_coach.translation_service.entity.Translation;
 
@@ -30,4 +31,11 @@ public interface TranslationService {
     List<Long> entityIds,
     List<LanguageCode> languages
   );
+  /**
+   * Create, Update and Merge translations in one go.
+   * 
+   * @param  mergeTranslations list of {@link TranslationMergeDto}
+   * @return                   a {@link ResultDto} containing created and updated {@link TranslationDto}
+   */
+  ResultDto<List<TranslationDto>> mergeTranslations(List<TranslationMergeDto> translationMergeDtos);
 }

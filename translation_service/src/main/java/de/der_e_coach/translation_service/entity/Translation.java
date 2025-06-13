@@ -17,6 +17,10 @@ import de.der_e_coach.shared_lib.dto.translation.TranslationKeyDto;
 @Entity
 @IdClass(TranslationId.class)
 public class Translation {
+  //#region Static ------------------------------------------------------------
+  public final static Long NONE_ENTITY_ID = -1L;
+  //#endregion
+
   //#region Entity field - entityName -----------------------------------------
   @Id
   @Column(name = "entity_name")
@@ -78,7 +82,7 @@ public class Translation {
   public Translation(TranslationKeyDto TranslationKeyDto, LanguageCode languageCode, String text) {
     this.entityName = TranslationKeyDto.entityName();
     this.entityField = TranslationKeyDto.entityField();
-    this.entityId = 0L;
+    this.entityId = NONE_ENTITY_ID;
     this.language = languageCode;
     this.text = text;
   }
@@ -130,4 +134,58 @@ public class Translation {
     return this;
   }
   //#endregion
+
+  //#region Overrides ---------------------------------------------------------
+  @Override
+  public String toString() {
+    return "Translation [entityName=" + entityName + ", entityField=" + entityField + ", entityId=" + entityId
+      + ", language=" + language + ", text=" + text + "]";
+  }
+
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((entityName == null) ? 0 : entityName.hashCode());
+    result = prime * result + ((entityField == null) ? 0 : entityField.hashCode());
+    result = prime * result + ((entityId == null) ? 0 : entityId.hashCode());
+    result = prime * result + ((language == null) ? 0 : language.hashCode());
+    result = prime * result + ((text == null) ? 0 : text.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    Translation other = (Translation)obj;
+    if (entityName == null) {
+      if (other.entityName != null)
+        return false;
+    } else if (!entityName.equals(other.entityName))
+      return false;
+    if (entityField == null) {
+      if (other.entityField != null)
+        return false;
+    } else if (!entityField.equals(other.entityField))
+      return false;
+    if (entityId == null) {
+      if (other.entityId != null)
+        return false;
+    } else if (!entityId.equals(other.entityId))
+      return false;
+    if (language != other.language)
+      return false;
+    if (text == null) {
+      if (other.text != null)
+        return false;
+    } else if (!text.equals(other.text))
+      return false;
+    return true;
+  }
+  //#endregion  
 }

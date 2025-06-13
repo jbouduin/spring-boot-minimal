@@ -16,7 +16,16 @@ public interface ItemService {
    * Create an item.
    * 
    * @param  item {@link ItemDto}
-   * @return      the created {@link ItemDto}
+   * @return      {@link ResultDto} containing the created {@link ItemDto}
    */
   ResultDto<ItemDto> createItem(ItemDto item);
+  /**
+   * Update an item.
+   * 
+   * @param  itemId the item id.
+   * @param  item   {@link ItemDto}
+   * @return        {@link ResultDto} containing the created {@link ItemDto}
+   */
+  ResultDto<ItemDto> updateItem(Long itemId, ItemDto item);
+
 }

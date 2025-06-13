@@ -17,7 +17,7 @@ public class TranslationDto extends de.der_e_coach.shared_lib.dto.translation.Tr
   }
 
   public TranslationDto(TranslationKeyDto key, LanguageCode language, String text) {
-    super(key, 0L, language, text);
+    super(key, Translation.NONE_ENTITY_ID, language, text);
   }
   
   public TranslationDto() {

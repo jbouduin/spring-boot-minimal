@@ -37,8 +37,8 @@ public class SecurityConfiguration {
           // swagger page is available for all
           .requestMatchers("/docs/**")
           .permitAll()
-          // system/version is available for all
-          .requestMatchers("/system/info")
+          // system/info and error is available for all
+          .requestMatchers("/system/info", "/error")
           .permitAll()
           .anyRequest()
           .authenticated()

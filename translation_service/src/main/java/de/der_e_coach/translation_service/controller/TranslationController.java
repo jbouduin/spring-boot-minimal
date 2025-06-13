@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import de.der_e_coach.shared_lib.dto.result.ResultDto;
 import de.der_e_coach.shared_lib.dto.translation.LanguageCode;
+import de.der_e_coach.shared_lib.dto.translation.TranslationMergeDto;
 import de.der_e_coach.translation_service.dto.TranslationDto;
 import de.der_e_coach.translation_service.service.TranslationService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -60,6 +61,25 @@ public class TranslationController {
     @RequestBody List<TranslationDto> translations
   ) {
     ResultDto<List<TranslationDto>> result = translationService.createTranslations(translations);
+    return ResponseEntity.status(result.getStatus().getValue()).body(result);
+  }
+  //#endregion
+
+  //#region Post --------------------------------------------------------------
+  @Operation(summary = "Merge translations", description = "Update, create and delete translations in one go.")
+  @ApiResponses(
+      value = {
+        @ApiResponse(responseCode = "200", description = "Success"),
+        @ApiResponse(responseCode = "400", description = "Invalid data"),
+        @ApiResponse(responseCode = "401", description = "Authentication needed"),
+        @ApiResponse(responseCode = "403", description = "Not authorized")
+      }
+  )
+  @PostMapping(path = "/merge", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<ResultDto<List<TranslationDto>>> mergeTranslations(
+    @RequestBody List<TranslationMergeDto> mergeTranslations
+  ) {    
+    ResultDto<List<TranslationDto>> result = translationService.mergeTranslations(mergeTranslations);
     return ResponseEntity.status(result.getStatus().getValue()).body(result);
   }
   //#endregion

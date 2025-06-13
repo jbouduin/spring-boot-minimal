@@ -6,6 +6,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.websocket.server.PathParam;
 
 @RestController
 @Tag(name = "Item")
@@ -59,6 +61,25 @@ public class ItemController {
   @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<ResultDto<ItemDto>> createItem(@RequestBody ItemDto item) {
     ResultDto<ItemDto> result = itemService.createItem(item);
+    return ResponseEntity.status(result.getStatus().getValue()).body(result);
+  }
+  //#endregion
+
+  //#region Put --------------------------------------------------------------
+  @Operation(summary = "Update item", description = "Update an item.")
+  @ApiResponses(
+      value = {
+        @ApiResponse(responseCode = "200", description = "Success"),
+        @ApiResponse(responseCode = "400", description = "Invalid data"),
+        @ApiResponse(responseCode = "401", description = "Not authenticated")
+      }
+  )
+  @PutMapping(path = "{item-id}", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<ResultDto<ItemDto>> updateItem(
+    @PathParam("item-id") Long itemId,
+    @RequestBody ItemDto item
+  ) {
+    ResultDto<ItemDto> result = itemService.updateItem(itemId, item);
     return ResponseEntity.status(result.getStatus().getValue()).body(result);
   }
   //#endregion

@@ -34,32 +34,36 @@ public class TranslationId implements Serializable {
     return entityName;
   }
 
-  public void setEntityName(String translationKey) {
+  public TranslationId setEntityName(String translationKey) {
     this.entityName = translationKey;
+    return this;
   }
 
   public LanguageCode getLanguage() {
     return language;
   }
 
-  public void setLanguage(LanguageCode language) {
+  public TranslationId setLanguage(LanguageCode language) {
     this.language = language;
+    return this;
   }
 
   public Long getEntityId() {
     return entityId;
   }
 
-  public void setEntityId(Long entityId) {
+  public TranslationId setEntityId(Long entityId) {
     this.entityId = entityId;
+    return this;
   }
 
   public String getEntityField() {
     return entityField;
   }
 
-  public void setEntityField(String entityField) {
+  public TranslationId setEntityField(String entityField) {
     this.entityField = entityField;
+    return this;
   }
   //#endregion
 

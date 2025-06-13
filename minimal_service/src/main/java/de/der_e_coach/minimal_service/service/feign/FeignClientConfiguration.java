@@ -18,7 +18,7 @@ public class FeignClientConfiguration {
       @Override
       public void apply(RequestTemplate requestTemplate) {
         String jwtToken = "Bearer " + getJwtToken();
-        if (jwtToken != null) {
+        if (jwtToken != null) {          
           requestTemplate.header("Authorization", jwtToken);
         }        
       }

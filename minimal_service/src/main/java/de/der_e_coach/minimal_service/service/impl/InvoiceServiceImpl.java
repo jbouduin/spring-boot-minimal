@@ -67,7 +67,7 @@ public class InvoiceServiceImpl implements InvoiceService {
     ResultDto<InvoiceDto> result;
     List<ValidationError> validationErrors = new ArrayList<ValidationError>();
 
-    if (!invoice.getId().equals(invoiceId)) {
+    if (!invoiceId.equals(invoice.getId())) {
       validationErrors
         .add(new ValidationError(this.getClass(), "updateInvoice", "001", "Invoice Id in URL and body do not match"));
     }

@@ -3,9 +3,11 @@ package de.der_e_coach.minimal_service.entity;
 import java.math.BigDecimal;
 
 import de.der_e_coach.minimal_service.dto.ItemDto;
+import de.der_e_coach.minimal_service.entity.listener.ItemListener;
 import de.der_e_coach.shared_lib.dto.translation.TranslationKeyDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,6 +16,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
+@EntityListeners(ItemListener.class)
 public class Item {
   //#region Static ------------------------------------------------------------
   public final static TranslationKeyDto DESCRIPTION_TRANSLATION_KEY = new TranslationKeyDto("item", "description");

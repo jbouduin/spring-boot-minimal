@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -32,6 +33,22 @@ public class ItemController {
   public ItemController(ItemService itemService) {
     this.itemService = itemService;
   }
+  //#endregion
+
+  //#region Delete ------------------------------------------------------------
+  @Operation(summary = "Delete item", description = "Delete an item.")
+  @ApiResponses(
+      value = {
+        @ApiResponse(responseCode = "204", description = "No content (success)"),
+        @ApiResponse(responseCode = "404", description = "Item not found")
+      }
+  )
+  @DeleteMapping(path = "{item-id}")
+  public ResponseEntity<ResultDto<Object>> deleteItem(    @PathParam("item-id") Long itemId  ) {
+    ResultDto<Object> result = itemService.deleteItem(itemId);
+    return ResponseEntity.status(result.getStatus().getValue()).body(result);
+  }
+
   //#endregion
 
   //#region Get ---------------------------------------------------------------
@@ -71,7 +88,8 @@ public class ItemController {
       value = {
         @ApiResponse(responseCode = "200", description = "Success"),
         @ApiResponse(responseCode = "400", description = "Invalid data"),
-        @ApiResponse(responseCode = "401", description = "Not authenticated")
+        @ApiResponse(responseCode = "401", description = "Not authenticated"),
+        @ApiResponse(responseCode = "404", description = "Item not found")
       }
   )
   @PutMapping(path = "{item-id}", produces = MediaType.APPLICATION_JSON_VALUE)

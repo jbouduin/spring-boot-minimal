@@ -1,5 +1,6 @@
 package de.der_e_coach.shared_lib.dto.translation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TranslationMergeDto {
@@ -11,6 +12,7 @@ public class TranslationMergeDto {
 
   //#region Constructor -------------------------------------------------------
   public TranslationMergeDto() {
+    this.translations = new ArrayList<TranslationRecord>();
   }
   //#endregion
 

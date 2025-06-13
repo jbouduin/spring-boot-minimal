@@ -36,6 +36,17 @@ public class ItemServiceImpl implements ItemService {
 
   //#region ItemService Members -----------------------------------------------
   @Override
+  public ResultDto<Object> deleteItem(Long itemId) {
+    return itemRepository
+      .findById(itemId)
+      .map((Item i) -> {
+        itemRepository.delete(i);
+        return ResultDto.deleteSuccessResult();
+      })
+      .orElse(ResultDto.notFound("Item with id '" + itemId + "'not found."));
+  }
+
+  @Override
   public ResultDto<List<ItemDto>> getItems() {
     ResultDto<List<ItemDto>> result;
     ResultDto<List<TranslationDto>> translations = translationServiceClient
@@ -221,5 +232,5 @@ public class ItemServiceImpl implements ItemService {
           .collect(Collectors.toList())
       );
   }
-  //#endregion
+  //#endregion  
 }

@@ -7,6 +7,13 @@ import de.der_e_coach.shared_lib.dto.result.ResultDto;
 
 public interface ItemService {
   /**
+   * Delete an item.
+   * 
+   * @param  itemId The Item id
+   * @return        {@link ResultDto}. Status is NO_CONTENT if item was successfully deleted
+   */
+  ResultDto<Object> deleteItem(Long itemId);
+  /**
    * Get items
    * 
    * @return List of {@link ItemDto}
@@ -27,5 +34,4 @@ public interface ItemService {
    * @return        {@link ResultDto} containing the created {@link ItemDto}
    */
   ResultDto<ItemDto> updateItem(Long itemId, ItemDto item);
-
 }

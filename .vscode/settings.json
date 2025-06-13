@@ -6,4 +6,7 @@
     "spring-boot.ls.problem.boot2.JAVA_AUTOWIRED_CONSTRUCTOR": "IGNORE",
     "java.project.explorer.showNonJavaResources": true,
     "java.dependency.packagePresentation": "hierarchical",
+    "spring-boot.ls.problem.boot2.JAVA_CONSTRUCTOR_PARAMETER_INJECTION": "IGNORE",
+    "spring-boot.ls.problem.boot2.JAVA_REPOSITORY": "IGNORE",
+    "spring-boot.ls.problem.version-validation.UPDATE_LATEST_MINOR_VERSION": "IGNORE",
 }

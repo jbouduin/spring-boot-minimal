@@ -19,4 +19,5 @@ public interface InvoiceService {
    * @return         {@link ResultDto} containing the created {@link InvoiceDto}
    */
   ResultDto<InvoiceDto> createInvoice(InvoiceDto invoice);
+  ResultDto<InvoiceDto> updateInvoice(Long invoiceId, InvoiceDto invoice);
 }

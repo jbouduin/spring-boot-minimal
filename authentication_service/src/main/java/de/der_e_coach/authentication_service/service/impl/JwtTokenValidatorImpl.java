@@ -17,8 +17,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.der_e_coach.authentication_service.service.JwtTokenValidator;
-import de.der_e_coach.shared_lib.dto.authorization.AuthorizationResultDto;
 import de.der_e_coach.shared_lib.dto.result.ResultDto;
+import de.der_e_coach.shared_lib.service.feign.authentication_service.AuthorizationResultDto;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;

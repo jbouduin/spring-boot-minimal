@@ -1,4 +1,4 @@
-package de.der_e_coach.shared_lib.dto.authorization;
+package de.der_e_coach.shared_lib.service.feign.authentication_service;
 
 import java.util.List;
 

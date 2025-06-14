@@ -3,8 +3,8 @@ package de.der_e_coach.authentication_service.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import de.der_e_coach.authentication_service.service.AuthorizationService;
-import de.der_e_coach.shared_lib.dto.authorization.AuthorizationResultDto;
 import de.der_e_coach.shared_lib.dto.result.ResultDto;
+import de.der_e_coach.shared_lib.service.feign.authentication_service.AuthorizationResultDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

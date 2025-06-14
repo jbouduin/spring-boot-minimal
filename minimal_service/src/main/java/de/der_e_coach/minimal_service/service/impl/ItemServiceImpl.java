@@ -12,12 +12,12 @@ import de.der_e_coach.minimal_service.dto.ItemDto;
 import de.der_e_coach.minimal_service.entity.Item;
 import de.der_e_coach.minimal_service.repository.ItemRepository;
 import de.der_e_coach.minimal_service.service.ItemService;
-import de.der_e_coach.minimal_service.service.feign.translation_service.TranslationServiceClient;
 import de.der_e_coach.shared_lib.dto.result.ResultDto;
 import de.der_e_coach.shared_lib.dto.result.ValidationError;
 import de.der_e_coach.shared_lib.dto.translation.TranslationDto;
 import de.der_e_coach.shared_lib.dto.translation.TranslationMergeDto;
 import de.der_e_coach.shared_lib.dto.translation.TranslationRecord;
+import de.der_e_coach.shared_lib.service.feign.translation_service.TranslationServiceClient;
 import jakarta.transaction.Transactional;
 
 @Service

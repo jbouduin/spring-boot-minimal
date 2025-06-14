@@ -6,8 +6,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 import de.der_e_coach.minimal_service.entity.Item;
-import de.der_e_coach.minimal_service.service.feign.translation_service.TranslationServiceClient;
 import de.der_e_coach.shared_lib.dto.translation.TranslationMergeDto;
+import de.der_e_coach.shared_lib.service.feign.translation_service.TranslationServiceClient;
 import jakarta.persistence.PreRemove;
 
 /**

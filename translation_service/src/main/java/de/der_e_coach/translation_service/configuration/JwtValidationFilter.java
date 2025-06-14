@@ -15,9 +15,9 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.der_e_coach.shared_lib.dto.authorization.AuthorizationResultDto;
 import de.der_e_coach.shared_lib.dto.result.ResultDto;
-import de.der_e_coach.translation_service.service.feign.authentication_service.AuthenticationServiceClient;
+import de.der_e_coach.shared_lib.service.feign.authentication_service.AuthenticationServiceClient;
+import de.der_e_coach.shared_lib.service.feign.authentication_service.AuthorizationResultDto;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

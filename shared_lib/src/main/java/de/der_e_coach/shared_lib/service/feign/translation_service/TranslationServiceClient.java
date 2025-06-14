@@ -1,4 +1,4 @@
-package de.der_e_coach.minimal_service.service.feign.translation_service;
+package de.der_e_coach.shared_lib.service.feign.translation_service;
 
 import java.util.List;
 
@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import de.der_e_coach.shared_lib.dto.result.ResultDto;
 import de.der_e_coach.shared_lib.dto.translation.LanguageCode;
 import de.der_e_coach.shared_lib.dto.translation.TranslationMergeDto;
+import de.der_e_coach.shared_lib.service.feign.FeignClientConfiguration;
 import de.der_e_coach.shared_lib.dto.translation.TranslationDto;
 
-@FeignClient(name = "translation-service", url = "${der-e-coach.translation-service.url}")
+@FeignClient(
+    name = "translation-service", url = "${der-e-coach.translation-service.url}", configuration = FeignClientConfiguration.class
+)
 public interface TranslationServiceClient {
   /**
    * Create new translations
@@ -48,6 +51,8 @@ public interface TranslationServiceClient {
    * @param  translationMergeDtos A list of {@link TranslationMergeDto}
    * @return
    */
-  @PostMapping(path = "/translation/merge", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+  @PostMapping(
+      path = "/translation/merge", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE
+  )
   ResultDto<List<TranslationDto>> mergeTranslations(@RequestBody List<TranslationMergeDto> translationMergeDtos);
 }

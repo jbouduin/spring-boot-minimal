@@ -36,6 +36,20 @@ openssl genrsa -out private.key 2048
 openssl rsa -in private.key -pubout -out public.key
 ```
 
+## Create some dummy data
+Make sure all services are running.
+
+In Powershell
+```PS
+cd scripts\populate
+.\populate.ps1 -u admin -p admin
+```
+
+It will 
+- create 5 items, with a german and english name and description
+- create 5 invoices
+- add the 5 items to each of the 5 invoices
+
 ## Service ports
 
 - Authentication Service: 5401 - [Swagger](http://localhost:5401/api/docs/swagger-ui/index.html)

@@ -1,0 +1,25 @@
+{
+  "id": null,
+  "code": "00004",
+  "price": 10,
+  "name": [
+    {
+      "language": "DE",
+      "text": "Artikel Name 00004"
+    },
+    {
+      "language": "EN",
+      "text": "Article name 00004"
+    }
+  ],
+  "description": [
+    {
+      "language": "DE",
+      "text": "Artikel Beschreibung 00004"
+    },
+    {
+      "language": "EN",
+      "text": "Article Description 00004"
+    }
+  ]
+}

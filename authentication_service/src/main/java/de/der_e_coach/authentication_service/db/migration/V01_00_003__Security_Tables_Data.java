@@ -58,24 +58,7 @@ public class V01_00_003__Security_Tables_Data extends BaseJavaMigration {
         passwordEncoder.encode(firstUseAdminPassword)
       )
       .roles("SYS_ADMIN", "SITE_ADMIN");
-    jdbcUserDetailsManager.createUser(builder.build());
-    // following users should not be created in a prod environment ;)
-    builder = User
-      .builder()
-      .username("sys_admin")
-      .password(
-        passwordEncoder.encode("sys_admin")
-      )
-      .roles("SYS_ADMIN");
-    jdbcUserDetailsManager.createUser(builder.build());
-    builder = User
-      .builder()
-      .username("site_admin")
-      .password(
-        passwordEncoder.encode("site_admin")
-      )
-      .roles("SITE_ADMIN");
-    jdbcUserDetailsManager.createUser(builder.build());
+    jdbcUserDetailsManager.createUser(builder.build());    
   }
   // #endregion
 }

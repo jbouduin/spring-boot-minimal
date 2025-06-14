@@ -1,6 +1,6 @@
 /*
  * Set default privilege granting to minimal_svc
- * for future objects created by minimal_flyway
+ * for future objects created by flyway
  */
 ALTER DEFAULT PRIVILEGES IN SCHEMA minimal_service
 GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO minimal_svc;

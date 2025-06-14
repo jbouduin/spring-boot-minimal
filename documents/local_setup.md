@@ -11,7 +11,7 @@ This setup, which is creating database and application users with unsafe passwor
 - open a windows terminal and run 
   - `docker exec -it <name of container> psql -U postgres -c "CREATE DATABASE minimal;`
   - `cd scripts`
-  - `initialize_local_postgres.bat`. It will copy [database.init.sql](scripts/database.init.sql) to the container and execute it. The script performs the following actions:
+  - `initialize_local_postgres.bat`. It will copy [database.init.sql](/scripts/database.init.sql) to the container and execute it. The script performs the following actions:
     - create the schemas `minimal_service`, `translation_service` and  `authorization_service` in the `minimal` database.
     - create a single flyway user `minimal_flyway` with password `your_flyway_password`.
     - grant the user `minimal_flyway` all privileges to perform database migrations in all schemas.
@@ -21,7 +21,7 @@ This setup, which is creating database and application users with unsafe passwor
 ## Reset the database
 - open a windows terminal and run 
   - `cd scripts`
-  - `reset_local_postgres`. It will copy [database.reset.sql](scripts/database.reset.sql) to the container and execute it. The script performs the following actions:
+  - `reset_local_postgres`. It will copy [database.reset.sql](/scripts/database.reset.sql) to the container and execute it. The script performs the following actions:
     - drop the database `minimal`
     - drop the users `minimal_flyway` and `minimal_svc`
     - recreate the database `minimal`

@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,12 +15,26 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+
+
 @Configuration
 public class SecurityConfiguration {
+  //#region private fields ---------------------------------------------------- 
+  private final JwtValidationFilter jwtValidationFilter;
+  //#endregion
+
+  //#region Constructor -------------------------------------------------------
+  @Autowired
+  public SecurityConfiguration(final JwtValidationFilter jwtValidationFilter) {
+    this.jwtValidationFilter = jwtValidationFilter;
+  }
+  //#endregion
+
   //#region Configuration beans -----------------------------------------------
   @Bean
   public UserDetailsManager userDetailsManager(DataSource dataSource) {
@@ -83,7 +98,8 @@ public class SecurityConfiguration {
           // anything else must be SYS_ADMIN
           .anyRequest()
           .hasRole("SYS_ADMIN")
-      );
+      )
+      .addFilterBefore(jwtValidationFilter, UsernamePasswordAuthenticationFilter.class);
     return httpSecurity.build();
   }
 

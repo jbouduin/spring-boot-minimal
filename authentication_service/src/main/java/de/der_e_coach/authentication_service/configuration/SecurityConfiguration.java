@@ -1,7 +1,5 @@
 package de.der_e_coach.authentication_service.configuration;
 
-import java.util.Arrays;
-
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,21 +14,22 @@ import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-
 
 @Configuration
 public class SecurityConfiguration {
   //#region private fields ---------------------------------------------------- 
+  private final CorsConfigurationSource corsConfigurationSource;
   private final JwtValidationFilter jwtValidationFilter;
   //#endregion
 
   //#region Constructor -------------------------------------------------------
   @Autowired
-  public SecurityConfiguration(final JwtValidationFilter jwtValidationFilter) {
+  public SecurityConfiguration(
+    final CorsConfigurationSource corsConfigurationSource,
+    final JwtValidationFilter jwtValidationFilter
+  ) {
+    this.corsConfigurationSource = corsConfigurationSource;
     this.jwtValidationFilter = jwtValidationFilter;
   }
   //#endregion
@@ -83,7 +82,7 @@ public class SecurityConfiguration {
     httpSecurity
       // as there are no forms submitting data, we can disable CSRF
       .csrf(AbstractHttpConfigurer::disable)
-      .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+      .cors(cors -> cors.configurationSource(corsConfigurationSource))
       .authorizeHttpRequests(
         auth -> auth
           // swagger page is available for all
@@ -107,18 +106,5 @@ public class SecurityConfiguration {
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
   }
-
-  @Bean
-  public CorsConfigurationSource corsConfigurationSource() {
-    CorsConfiguration configuration = new CorsConfiguration();
-    configuration.addAllowedOriginPattern("*");
-    configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-    configuration.setAllowedHeaders(Arrays.asList("*"));
-    configuration.setAllowCredentials(true);
-    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-    source.registerCorsConfiguration("/**", configuration);
-    return source;
-  }
-
   //#endregion
 }

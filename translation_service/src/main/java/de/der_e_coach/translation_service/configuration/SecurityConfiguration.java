@@ -1,7 +1,5 @@
 package de.der_e_coach.translation_service.configuration;
 
-import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,9 +9,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import de.der_e_coach.shared_lib.configuration.JwtValidationFilter;
 
@@ -21,12 +17,17 @@ import de.der_e_coach.shared_lib.configuration.JwtValidationFilter;
 @EnableMethodSecurity
 public class SecurityConfiguration {
   //#region private fields ---------------------------------------------------- 
+  private final CorsConfigurationSource corsConfigurationSource;
   private final JwtValidationFilter jwtValidationFilter;
   //#endregion
 
   //#region Constructor -------------------------------------------------------
   @Autowired
-  public SecurityConfiguration(final JwtValidationFilter jwtValidationFilter) {
+  public SecurityConfiguration(
+    final CorsConfigurationSource corsConfigurationSource,
+    final JwtValidationFilter jwtValidationFilter
+  ) {
+    this.corsConfigurationSource = corsConfigurationSource;
     this.jwtValidationFilter = jwtValidationFilter;
   }
   //#endregion
@@ -36,7 +37,7 @@ public class SecurityConfiguration {
   public SecurityFilterChain securityFilterChain(final HttpSecurity http) throws Exception {
     http
       .csrf(AbstractHttpConfigurer::disable)
-      .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+      .cors(cors -> cors.configurationSource(corsConfigurationSource))
       .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
       .authorizeHttpRequests(
         auth -> auth
@@ -52,18 +53,5 @@ public class SecurityConfiguration {
       .addFilterBefore(jwtValidationFilter, UsernamePasswordAuthenticationFilter.class);
     return http.build();
   }
-
-  @Bean
-  public CorsConfigurationSource corsConfigurationSource() {
-    CorsConfiguration configuration = new CorsConfiguration();
-    configuration.addAllowedOriginPattern("*");
-    configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-    configuration.setAllowedHeaders(Arrays.asList("*"));
-    configuration.setAllowCredentials(true);
-    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-    source.registerCorsConfiguration("/**", configuration);
-    return source;
-  }
-
   //#endregion  
 }

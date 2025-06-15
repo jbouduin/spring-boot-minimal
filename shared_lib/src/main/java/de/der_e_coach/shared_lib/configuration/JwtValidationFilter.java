@@ -1,4 +1,4 @@
-package de.der_e_coach.translation_service.configuration;
+package de.der_e_coach.shared_lib.configuration;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -44,7 +44,7 @@ public class JwtValidationFilter extends OncePerRequestFilter {
     String header = request.getHeader(HttpHeaders.AUTHORIZATION);
     if (header != null && header.startsWith("Bearer ")) {
       String token = header.substring(7);
-      ResultDto<AuthorizationResultDto> validationResult = authenticationServiceClient.validateToken(token);            
+      ResultDto<AuthorizationResultDto> validationResult = authenticationServiceClient.validateToken(token);
       if (validationResult.isSuccess()) {
         Collection<? extends GrantedAuthority> authorities = validationResult
           .getData()

@@ -11,6 +11,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import de.der_e_coach.shared_lib.configuration.JwtValidationFilter;
+
 @Configuration
 @EnableMethodSecurity
 public class SecurityConfiguration {

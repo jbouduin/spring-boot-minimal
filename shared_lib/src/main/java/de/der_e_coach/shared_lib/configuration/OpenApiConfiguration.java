@@ -1,4 +1,4 @@
-package de.der_e_coach.translation_service.configuration;
+package de.der_e_coach.shared_lib.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

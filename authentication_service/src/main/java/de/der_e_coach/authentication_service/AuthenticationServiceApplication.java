@@ -5,13 +5,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 
-import de.der_e_coach.shared_lib.configuration.JwtValidationFilter;
+import de.der_e_coach.shared_lib.configuration.JwtValidationFilterImpl;
 
 @SpringBootApplication()
 @ComponentScan(
     basePackages = "de.der_e_coach", excludeFilters = {
       @ComponentScan.Filter(type = FilterType.REGEX, pattern = "de.der_e_coach.shared_lib.service.feign.*"),
-      @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = JwtValidationFilter.class)
+      @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = JwtValidationFilterImpl.class)
     }
 )
 public class AuthenticationServiceApplication {

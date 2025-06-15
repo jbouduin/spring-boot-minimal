@@ -3,34 +3,18 @@ package de.der_e_coach.authentication_service.configuration;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfigurationSource;
 
 @Configuration
 public class SecurityConfiguration {
-  //#region private fields ---------------------------------------------------- 
-  private final CorsConfigurationSource corsConfigurationSource;
-  private final JwtValidationFilter jwtValidationFilter;
-  //#endregion
-
   //#region Constructor -------------------------------------------------------
   @Autowired
-  public SecurityConfiguration(
-    final CorsConfigurationSource corsConfigurationSource,
-    final JwtValidationFilter jwtValidationFilter
-  ) {
-    this.corsConfigurationSource = corsConfigurationSource;
-    this.jwtValidationFilter = jwtValidationFilter;
+  public SecurityConfiguration() {
   }
   //#endregion
 
@@ -75,31 +59,6 @@ public class SecurityConfiguration {
     // user exists is for own use and does not look to the email
     result.setUserExistsSql("SELECT a.account_name FROM authentication_service.account a WHERE a.account_name= ?");
     return result;
-  }
-
-  @Bean
-  public SecurityFilterChain securityFilterChain(final HttpSecurity httpSecurity) throws Exception {
-    httpSecurity
-      // as there are no forms submitting data, we can disable CSRF
-      .csrf(AbstractHttpConfigurer::disable)
-      .cors(cors -> cors.configurationSource(corsConfigurationSource))
-      .authorizeHttpRequests(
-        auth -> auth
-          // swagger page is available for all
-          .requestMatchers("docs/**")
-          .permitAll()
-          // actuator endpoints are only available for sys admins
-          .requestMatchers(EndpointRequest.toAnyEndpoint())
-          .hasRole("SYS_ADMIN")
-          // login is available for all
-          .requestMatchers("login", "authorize")
-          .permitAll()
-          // anything else must be SYS_ADMIN
-          .anyRequest()
-          .hasRole("SYS_ADMIN")
-      )
-      .addFilterBefore(jwtValidationFilter, UsernamePasswordAuthenticationFilter.class);
-    return httpSecurity.build();
   }
 
   @Bean

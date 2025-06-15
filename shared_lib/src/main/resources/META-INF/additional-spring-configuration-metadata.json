@@ -84,6 +84,26 @@
       "name": "der-e-coach.cors.allow_credentials",
       "type": "java.lang.String",
       "description": "A description for 'der-e-coach.cors.allow_credentials'"
+    },
+    {
+      "name": "der-e-coach.security.permit-all-patterns",
+      "type": "java.lang.String",
+      "description": "A description for 'der-e-coach.security.permit-all-patterns'"
+    },
+    {
+      "name": "der-e-coach.security.enable-cors",
+      "type": "java.lang.String",
+      "description": "A description for 'der-e-coach.security.enable-cors'"
+    },
+    {
+      "name": "der-e-coach.security.disable-crsf",
+      "type": "java.lang.String",
+      "description": "A description for 'der-e-coach.security.disable-crsf'"
+    },
+    {
+      "name": "der-e-coach.security.admin-patterns",
+      "type": "java.lang.String",
+      "description": "A description for 'der-e-coach.security.admin-patterns'"
     }
   ]
 }

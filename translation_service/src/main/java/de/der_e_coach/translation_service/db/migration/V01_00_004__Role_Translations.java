@@ -44,7 +44,7 @@ public class V01_00_004__Role_Translations extends BaseJavaMigration {
             // System administrator
             new TranslationDto(SystemRole.SYS_ADMIN.getTranslationKey(), LanguageCode.DE, "Systemadministrator"),
             new TranslationDto(SystemRole.SYS_ADMIN.getTranslationKey(), LanguageCode.EN, "System Administrator"),
-            new TranslationDto(SystemRole.SYS_ADMIN.getTranslationKey(), LanguageCode.NL, "Systembeheereder"),
+            new TranslationDto(SystemRole.SYS_ADMIN.getTranslationKey(), LanguageCode.NL, "Systembeheerder"),
             new TranslationDto(SystemRole.SYS_ADMIN.getTranslationKey(), LanguageCode.FR, "Administrateur système"),
             // User
             new TranslationDto(SystemRole.USER.getTranslationKey(), LanguageCode.DE, "Benutzer (ohne erhöhte Rechte)"),
